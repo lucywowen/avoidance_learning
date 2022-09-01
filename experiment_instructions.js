@@ -96,9 +96,9 @@ var missed_responses = 0;
 //   ]
 // }
 
-// var comprehension = {
-//   type: jsPsychComprehension
-// }
+var comprehension = {
+  type: jsPsychComprehension
+}
 
 // DEBUG INSTRUCTIONS REMOVE WHEN DONE!
 
@@ -108,11 +108,10 @@ var missed_responses = 0;
 //     instructions_03,
 //   ]}
 
-// var instructions = {
-//   timeline: [
-//     comprehension
-//   ]}
-
+var instructions = {
+  timeline: [
+    comprehension
+  ]}
 
 // var instructions = {
 //   timeline: [
@@ -195,141 +194,141 @@ var missed_responses = 0;
 // presentations per unique pair / side.
 
 // // Initialize phase array.
-var learning_phase_1 = [];
+// var learning_phase_1 = [];
 
-// Iteratively define trials
-// for (i = 0; i < 12; i++) {
-for (i = 0; i < 1; i++) {
-
-
-  // Initialize (temporary) trial array.
-  const trials = [];
-
-  // Iterate over unique pairs.
-  for (j = 0; j < 4; j++) {
-
-    // Define metadata.
-    if (j % 2 == 0) { 
-      var val = 'win'; 
-      var color = context_array[2];
-    }
-    else { 
-      var val = 'lose'; 
-      var color = context_array[3];
-    }
-
-    // if (val = 'win') { var color = 'reward'; }
-    // else { var color = 'punish'; }
-
-    // If you want to take away counterfactuals half time
-    // if (j == 1) { var cf = false;} 
-    // else if (j == 3) { var cf = false;}
-    // else { var cf = true; }
-    var cf = true;
+// // Iteratively define trials
+// // for (i = 0; i < 12; i++) {
+// for (i = 0; i < 1; i++) {
 
 
-    // Append trial (LR).
-    var LR = {
-      type: jsPsychLearning,
-      symbol_L: symbol_array[2*j+0],
-      symbol_R: symbol_array[2*j+1],
-      outcome_L: jsPsych.randomization.sampleWithoutReplacement([val,val,val,'zero'],1)[0],
-      outcome_R: jsPsych.randomization.sampleWithoutReplacement(['zero','zero','zero',val],1)[0],
-      counterfactual: cf,
-      context:color,
-      choices: ['arrowleft','arrowright'],
-      correct: ((val == 'win') ? 'arrowleft' : 'arrowright'),
-      data: {block: 1},
-      on_finish: function(data) {
+//   // Initialize (temporary) trial array.
+//   const trials = [];
 
-        // Evaluate missing data
-        if ( data.rt == null ) {
+//   // Iterate over unique pairs.
+//   for (j = 0; j < 4; j++) {
 
-          // Set missing data to true.
-          data.missing = true;
+//     // Define metadata.
+//     if (j % 2 == 0) { 
+//       var val = 'win'; 
+//       var color = context_array[2];
+//     }
+//     else { 
+//       var val = 'lose'; 
+//       var color = context_array[3];
+//     }
 
-          // Increment counter. Check if experiment should end.
-          missed_responses++;
-          if (missed_responses >= missed_threshold) {
-            low_quality = true;
-            jsPsych.endExperiment();
-          }
+//     // if (val = 'win') { var color = 'reward'; }
+//     // else { var color = 'punish'; }
 
-        } else {
-
-          // Set missing data to false.
-          data.missing = false;
-
-        }
-
-      }
-
-    }
-
-    // Define looping node.
-    const LR_node = {
-      timeline: [LR],
-      loop_function: function(data) {
-        return data.values()[0].missing;
-      }
-    }
-    trials.push(LR_node);
+//     // If you want to take away counterfactuals half time
+//     // if (j == 1) { var cf = false;} 
+//     // else if (j == 3) { var cf = false;}
+//     // else { var cf = true; }
+//     var cf = true;
 
 
-    // Append trial (RL).
-    var RL = {
-      type: jsPsychLearning,
-      symbol_L: symbol_array[2*j+1],
-      symbol_R: symbol_array[2*j+0],
-      outcome_L: jsPsych.randomization.sampleWithoutReplacement(['zero','zero','zero',val],1)[0],
-      outcome_R: jsPsych.randomization.sampleWithoutReplacement([val,val,val,'zero'],1)[0],
-      counterfactual: cf,
-      context:color,
-      choices: ['arrowleft','arrowright'],
-      correct: ((val == 'win') ? 'arrowright' : 'arrowleft'),
-      data: {block: 1},
-      on_finish: function(data) {
+//     // Append trial (LR).
+//     var LR = {
+//       type: jsPsychLearning,
+//       symbol_L: symbol_array[2*j+0],
+//       symbol_R: symbol_array[2*j+1],
+//       outcome_L: jsPsych.randomization.sampleWithoutReplacement([val,val,val,'zero'],1)[0],
+//       outcome_R: jsPsych.randomization.sampleWithoutReplacement(['zero','zero','zero',val],1)[0],
+//       counterfactual: cf,
+//       context:color,
+//       choices: ['arrowleft','arrowright'],
+//       correct: ((val == 'win') ? 'arrowleft' : 'arrowright'),
+//       data: {block: 1},
+//       on_finish: function(data) {
 
-        // Evaluate missing data
-        if ( data.rt == null ) {
+//         // Evaluate missing data
+//         if ( data.rt == null ) {
 
-          // Set missing data to true.
-          data.missing = true;
+//           // Set missing data to true.
+//           data.missing = true;
 
-          // Increment counter. Check if experiment should end.
-          missed_responses++;
-          if (missed_responses >= missed_threshold) {
-            low_quality = true;
-            jsPsych.endExperiment();
-          }
+//           // Increment counter. Check if experiment should end.
+//           missed_responses++;
+//           if (missed_responses >= missed_threshold) {
+//             low_quality = true;
+//             jsPsych.endExperiment();
+//           }
 
-        } else {
+//         } else {
 
-          // Set missing data to false.
-          data.missing = false;
+//           // Set missing data to false.
+//           data.missing = false;
 
-        }
+//         }
 
-      }
+//       }
 
-    }
+//     }
 
-    // Define looping node.
-    const RL_node = {
-      timeline: [RL],
-      loop_function: function(data) {
-        return data.values()[0].missing;
-      }
-    }
-    trials.push(RL_node);
+//     // Define looping node.
+//     const LR_node = {
+//       timeline: [LR],
+//       loop_function: function(data) {
+//         return data.values()[0].missing;
+//       }
+//     }
+//     trials.push(LR_node);
 
 
-  }
+//     // Append trial (RL).
+//     var RL = {
+//       type: jsPsychLearning,
+//       symbol_L: symbol_array[2*j+1],
+//       symbol_R: symbol_array[2*j+0],
+//       outcome_L: jsPsych.randomization.sampleWithoutReplacement(['zero','zero','zero',val],1)[0],
+//       outcome_R: jsPsych.randomization.sampleWithoutReplacement([val,val,val,'zero'],1)[0],
+//       counterfactual: cf,
+//       context:color,
+//       choices: ['arrowleft','arrowright'],
+//       correct: ((val == 'win') ? 'arrowright' : 'arrowleft'),
+//       data: {block: 1},
+//       on_finish: function(data) {
 
-  // Shuffle trials. Append.
-  learning_phase_1 = learning_phase_1.concat( jsPsych.randomization.repeat(trials, 1) );
+//         // Evaluate missing data
+//         if ( data.rt == null ) {
 
-}
+//           // Set missing data to true.
+//           data.missing = true;
+
+//           // Increment counter. Check if experiment should end.
+//           missed_responses++;
+//           if (missed_responses >= missed_threshold) {
+//             low_quality = true;
+//             jsPsych.endExperiment();
+//           }
+
+//         } else {
+
+//           // Set missing data to false.
+//           data.missing = false;
+
+//         }
+
+//       }
+
+//     }
+
+//     // Define looping node.
+//     const RL_node = {
+//       timeline: [RL],
+//       loop_function: function(data) {
+//         return data.values()[0].missing;
+//       }
+//     }
+//     trials.push(RL_node);
+
+
+//   }
+
+//   // Shuffle trials. Append.
+//   learning_phase_1 = learning_phase_1.concat( jsPsych.randomization.repeat(trials, 1) );
+
+// }
 
 //------------------------------------//
 // Define probe phase 1.
@@ -340,70 +339,70 @@ for (i = 0; i < 1; i++) {
 // (112 total trials).
 
 // Initialize phase array.
-probe_phase_1 = [];
+// probe_phase_1 = [];
 
-// Iteratively define trials
-// for (i = 0; i < 8; i++) {
-for (i = 0; i < 2; i++) {
+// // Iteratively define trials
+// // for (i = 0; i < 8; i++) {
+// for (i = 0; i < 2; i++) {
 
-  // for (j = 0; j < 8; j++) {
-  for (j = 0; j < 2; j++) {
+//   // for (j = 0; j < 8; j++) {
+//   for (j = 0; j < 2; j++) {
 
-    if (i != j) {
+//     if (i != j) {
 
-      // Append trial.
-      var probe = {
-        type: jsPsychProbe,
-        symbol_L: symbol_array[i],
-        symbol_R: symbol_array[j],
-        choices: ['arrowleft','arrowright'],
-        data: {block: 1},
-        on_finish: function(data) {
+//       // Append trial.
+//       var probe = {
+//         type: jsPsychProbe,
+//         symbol_L: symbol_array[i],
+//         symbol_R: symbol_array[j],
+//         choices: ['arrowleft','arrowright'],
+//         data: {block: 1},
+//         on_finish: function(data) {
 
-          // Evaluate missing data
-          if ( data.rt == null ) {
+//           // Evaluate missing data
+//           if ( data.rt == null ) {
 
-            // Set missing data to true.
-            data.missing = true;
+//             // Set missing data to true.
+//             data.missing = true;
 
-            // Increment counter. Check if experiment should end.
-            missed_responses++;
-            if (missed_responses >= missed_threshold) {
-              low_quality = true;
-              jsPsych.endExperiment();
-            }
+//             // Increment counter. Check if experiment should end.
+//             missed_responses++;
+//             if (missed_responses >= missed_threshold) {
+//               low_quality = true;
+//               jsPsych.endExperiment();
+//             }
 
-          } else {
+//           } else {
 
-            // Set missing data to false.
-            data.missing = false;
+//             // Set missing data to false.
+//             data.missing = false;
 
-          }
+//           }
 
-        }
+//         }
 
-      }
+//       }
 
-      // Define looping node.
-      const probe_node = {
-        timeline: [probe],
-        loop_function: function(data) {
-          return data.values()[0].missing;
-        }
-      }
+//       // Define looping node.
+//       const probe_node = {
+//         timeline: [probe],
+//         loop_function: function(data) {
+//           return data.values()[0].missing;
+//         }
+//       }
 
-      // Add trials twice.
-      probe_phase_1.push(probe_node);
-      probe_phase_1.push(probe_node);
+//       // Add trials twice.
+//       probe_phase_1.push(probe_node);
+//       probe_phase_1.push(probe_node);
 
-    }
+//     }
 
-  }
+//   }
 
-};
+// };
 
-// Shuffle trials.
-probe_phase_1 = jsPsych.randomization.repeat(probe_phase_1, 1);
+// // Shuffle trials.
+// probe_phase_1 = jsPsych.randomization.repeat(probe_phase_1, 1);
 
 // //---------------------------------------//
 // // Define learning phase 2.
@@ -647,10 +646,10 @@ var timeline = [];
 
 timeline.push(fullscreen);
 
-// timeline = timeline.concat(instructions);  
+timeline = timeline.concat(instructions);  
 
-timeline = timeline.concat(learning_phase_1);
-timeline = timeline.concat(probe_phase_1);
+// timeline = timeline.concat(learning_phase_1);
+// timeline = timeline.concat(probe_phase_1[0]);
 
 jsPsych.run(timeline);
 

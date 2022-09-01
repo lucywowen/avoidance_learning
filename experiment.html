@@ -5,14 +5,17 @@
     <script src="https://unpkg.com/jspsych@7.2.3"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.1"></script>
     <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.1"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1"></script>
+    <!-- <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-call-function@1"></script>
-    <script src="https://unpkg.com/@jspsych/jspsych-instructions@1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-instructions@1"></script>
     <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.1"></script>
     <link href="https://unpkg.com/jspsych@7.2.3/css/jspsych.css" rel="stylesheet" type="text/css" />
 
     <!-- Load custom jsPsych plug-ins -->
-    <script src="plugins/learning-trials/index.browser.js"></script>
+    <script src="js/learning-trials.js"></script>
+    <script src="js/comprehension.js"></script>
+    <!-- <script src="js/instructions.js"></script> -->
+    <script src="js/probe.js"></script>
     <!-- <script src="plugins/instructions/index.browser.js"></script> -->
 
 
@@ -22,6 +25,6 @@
 </head>
 
 <body></body>
-<script src="experiment.js"></script>
+<script src="experiment_instructions.js"></script>
 
 </html>
