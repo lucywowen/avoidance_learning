@@ -33,7 +33,7 @@ var jsPsychComprehension = (function (jsPsych) {
       var plugin_id_selector = '#' + plugin_id_name;
       var _join = (/*args*/) =>  {
         var arr = Array.prototype.slice.call(arguments, _join.length);
-        return arr.join(separator = '-');
+        return arr.join("-");
       }
 
       // ---------------------------------- /f/
@@ -101,6 +101,7 @@ var jsPsychComprehension = (function (jsPsych) {
       // Initialize form element
       html += '<form id="jspsych-survey-multi-choice-form">';
 
+      var i = 0;
       // Iteratively add comprehension questions.
       for (i = 0; i < prompts.length; i++) {
 
@@ -110,6 +111,7 @@ var jsPsychComprehension = (function (jsPsych) {
         // Add question text
         html += `<p class="jspsych-survey-multi-choice-text survey-multi-choice">${prompts[i]}</p>`;
 
+        var j = 0;
         // Iteratively add options.
         for (j = 0; j < options[i].length; j++) {
 

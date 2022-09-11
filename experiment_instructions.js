@@ -33,85 +33,76 @@ var missed_responses = 0;
 //---------------------------------------//
 // Define learning phase instructions.
 //---------------------------------------//
-// var instructions_01 = {
-//   type: jsPsychInstructions,
-//   pages: [
-//     "We are now starting the experiment.<br><br>Use the buttons below (or the left/right arrow keys) to navigate the instructions.",
-//     "In this task, you are picking a team of knights.<br>The knights will look like the ones below.",
-//     "Each knight will have a <b>unique symbol</b> on its chestplate.<br>This symbol will help you identify each knight.",
-//     "You'll also pick your team of knights from different places. <br>Some of places will have knights that are good and will give you more points and some places will have knights are bad and will take away points.",
-//     "On every turn, you will choose a knight for your team.<br>When you select a knight, it may give you:<br><b><font color=#01579b>+10 points, </font><font color=#303030>+0 points</font></b>, or <b><font color=#A41919>-10 points</font></b>.",
-//     "To help you learn, we will also show you the points you<br><i>could have earned</i> if you had chosen the other knight.<br><b>NOTE:</b> You will earn points only for the knight you choose.",
-//     "Some knights are better than others. Some will give you more points than others and some will lose you less points that others.",
-//     "Sometimes you'll know the points from the unchosen knights, but sometimes you won't know.",
-//     "Now let's practice with the knights below. Using the left/right<br>arrow keys, select the knights for testing and try to learn<br>which will give you more points.",
-//     "<b>HINT:</b> Pay attention to the symbols and the results of each test."
-//   ],
-//   symbol_L: "V",
-//   symbol_R: "U",
-// }
+var instructions_01 = {
+  type: jsPsychInstructions,
+  pages: [
+    "We are now starting the experiment.<br><br>Use the buttons below (or the left/right arrow keys) to navigate the instructions.",
+    "In this task, you are picking a team of knights.<br>The knights will look like the ones below.",
+    "Each knight will have a <b>unique symbol</b> on its chestplate.<br>This symbol will help you identify each knight.",
+    "You'll also pick your team of knights from different places. <br>Some of places will have knights that are good and will give you more points and some places will have knights are bad and will take away points.",
+    "On every turn, you will choose a knight for your team.<br>When you select a knight, it may give you:<br><b><font color=#01579b>+10 points, </font><font color=#303030>+0 points</font></b>, or <b><font color=#A41919>-10 points</font></b>.",
+    "To help you learn, we will also show you the points you<br><i>could have earned</i> if you had chosen the other knight.<br><b>NOTE:</b> You will earn points only for the knight you choose.",
+    "Some knights are better than others. Some will give you more points than others and some will lose you less points that others.",
+    "Sometimes you'll know the points from the unchosen knights, but sometimes you won't know.",
+    "Now let's practice with the knights below. Using the left/right<br>arrow keys, select the knights for testing and try to learn<br>which will give you more points.",
+    "<b>HINT:</b> Pay attention to the symbols and the results of each test."
+  ],
+  symbol_L: "V",
+  symbol_R: "U",
+}
 
-// var practice_block_01 = {
-//   type: 'practice',
-//   symbol_L: "V",
-//   symbol_R: "U",
-//   outcome_L: "zero",
-//   outcome_R: "win",
-//   context:context_array[0],
-//   choices: ['arrowleft','arrowright'],
-//   correct: 'arrowright',
-//   feedback_duration: 2000
-// }
+var practice_block_01 = {
+  type: jsPsychPractice,
+  symbol_L: "V",
+  symbol_R: "U",
+  outcome_L: "zero",
+  outcome_R: "win",
+  context:context_array[0],
+  choices: ['arrowleft','arrowright'],
+  correct: 'arrowright',
+  feedback_duration: 2000
+}
 
-// const instructions_02 = {
-//   type: jsPsychMyInstructions,
-//   pages: [
-//     "Great job! Now let's try for one more set of knights."
-//   ],
-//   symbol_L: "W",
-//   symbol_R: "R",
-// }
+const instructions_02 = {
+  type: jsPsychMyInstructions,
+  pages: [
+    "Great job! Now let's try for one more set of knights."
+  ],
+  symbol_L: "W",
+  symbol_R: "R",
+}
 
-// var practice_block_02 = {
-//   type: 'palminteri-practice',
-//   symbol_L: "W",
-//   symbol_R: "R",
-//   outcome_L: "lose",
-//   outcome_R: "zero",
-//   context:context_array[1],
-//   choices: ['arrowleft','arrowright'],
-//   correct: 'arrowright',
-//   feedback_duration: 2000
-// }
+var practice_block_02 = {
+  type: jsPsychPractice,
+  symbol_L: "W",
+  symbol_R: "R",
+  outcome_L: "lose",
+  outcome_R: "zero",
+  context:context_array[1],
+  choices: ['arrowleft','arrowright'],
+  correct: 'arrowright',
+  feedback_duration: 2000
+}
 
-// var instructions_03 = {
-//   type: jsPsychMyInstructions,
-//   pages: [
-//     "During the task, there will be many knights to test.<br>Remember to pay close attention to their symbols.",
-//     "Your job is to try to select the best knight on each trial.<br>Even though you will learn the test results for both knights,<br>you will only earn points for the knight you test.",
-//     "<b>HINT:</b> The knights may not always give you points, but some knights will give you points and others will lose you points more often than others.",
-//     "You should try to earn as many points as you can, even if it's not possible to win points or avoid losing points on every round.",
-//     "At the end of the task, the total number of points you've earned will be converted into a performance bonus.",
-//     "Next, we will ask you some questions about the task.<br>You must answer all the questions correctly to continue.",
-//   ]
-// }
+const instructions_03 = {
+  type: jsPsychMyInstructions,
+  pages: [
+    "During the task, there will be many knights to test.<br>Remember to pay close attention to their symbols.",
+    "Your job is to try to select the best knight on each trial.<br>Even though you will learn the test results for both knights,<br>you will only earn points for the knight you test.",
+    "<b>HINT:</b> The knights may not always give you points, but some knights will give you points and others will lose you points more often than others.",
+    "You should try to earn as many points as you can, even if it's not possible to win points or avoid losing points on every round.",
+    "At the end of the task, the total number of points you've earned will be converted into a performance bonus.",
+    "Next, we will ask you some questions about the task.<br>You must answer all the questions correctly to continue."],
+    symbol_L: " ",
+    symbol_R: " "
+}
 
 var comprehension = {
   type: jsPsychComprehension
 }
 
+
 // DEBUG INSTRUCTIONS REMOVE WHEN DONE!
-
-// var instructions = {
-//   timeline: [
-//     instructions_02,
-//     instructions_03,
-//   ]}
-
-var instructions = {
-  timeline: [
-    comprehension
-  ]}
 
 // var instructions = {
 //   timeline: [
@@ -121,27 +112,38 @@ var instructions = {
 //     practice_block_02,
 //     instructions_03,
 //     comprehension
-//   ],
-//   loop_function: function(data) {
+//   ]}
 
-//     // Extract number of errors.
-//     const num_errors = data.values().slice(-1)[0].num_errors;
 
-//     // Check if instructions should repeat.
-//     if (num_errors > max_errors) {
-//       num_loops++;
-//       if (num_loops >= max_loops) {
-//         low_quality = true;
-//         return false;
-//       } else {
-//         return true;
-//       }
-//     } else {
-//       return false;
-//     }
+var instructions = {
+  timeline: [
+    instructions_01,
+    practice_block_01,
+    instructions_02,
+    practice_block_02,
+    instructions_03,
+    comprehension
+  ],
+  loop_function: function(data) {
 
-//   }
-// }
+    // Extract number of errors.
+    const num_errors = data.values().slice(-1)[0].num_errors;
+
+    // Check if instructions should repeat.
+    if (num_errors > max_errors) {
+      num_loops++;
+      if (num_loops >= max_loops) {
+        low_quality = true;
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+
+  }
+}
 
 // var comprehension_check = {
 //   type: 'call-function',

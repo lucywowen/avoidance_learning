@@ -141,15 +141,15 @@ var jsPsychMyInstructions = (function (jsPsych) {
       // Define EventListener.
       const btnListener = (evt) => {
         evt.target.removeEventListener('click', btnListener);
-        if(this.id === "jspsych-instructions-back"){
+        if(evt.currentTarget.id === "jspsych-instructions-back"){
           back();
         }
-        else if(this.id === 'jspsych-instructions-next'){
+        else if(evt.currentTarget.id === 'jspsych-instructions-next'){
           next();
         }
       }
 
-      show_current_page = () => {
+      const show_current_page = () => {
 
         // Update instructions text.
         display_element.querySelector('.instructions').innerHTML = `<p>${trial.pages[current_page]}</p>`;
@@ -166,7 +166,7 @@ var jsPsychMyInstructions = (function (jsPsych) {
 
       }
 
-      next = () => {
+      const next = () => {
 
         add_current_page_to_view_history()
 
@@ -181,7 +181,7 @@ var jsPsychMyInstructions = (function (jsPsych) {
 
       }
 
-      back = () => {
+      const back = () => {
 
         add_current_page_to_view_history()
 
@@ -190,7 +190,7 @@ var jsPsychMyInstructions = (function (jsPsych) {
         show_current_page();
       }
 
-      add_current_page_to_view_history = () => {
+      const add_current_page_to_view_history = () => {
 
         var current_time = performance.now();
 
@@ -204,7 +204,7 @@ var jsPsychMyInstructions = (function (jsPsych) {
         last_page_update_time = current_time;
       }
 
-      endTrial = () => {
+      const endTrial = () => {
 
         this.jsPsych.pluginAPI.cancelKeyboardResponse(keyboard_listener);
 
