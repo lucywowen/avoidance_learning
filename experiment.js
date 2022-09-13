@@ -2,7 +2,11 @@
 // Define symbol assignment.
 //---------------------------------------//
 
-const jsPsych = initJsPsych();
+const jsPsych = initJsPsych({
+  on_trial_finish: function (data) {
+      console.log(data)
+  }
+});
 // Define unique symbols.
 var symbol_array = ['c','d','e','f','j','k','m','o','s','t','y','C','N','O','L','T']
 
@@ -640,10 +644,10 @@ timeline = timeline.concat(ready);
 timeline = timeline.concat(learning_phase_1);
 timeline = timeline.concat(instructions_05);
 timeline = timeline.concat(probe_phase_1);  
-timeline = timeline.concat(instructions_06);
-timeline = timeline.concat(learning_phase_2);
-timeline = timeline.concat(instructions_05);
-timeline = timeline.concat(probe_phase_2);
+// timeline = timeline.concat(instructions_06);
+// timeline = timeline.concat(learning_phase_2);
+// timeline = timeline.concat(instructions_05);
+// timeline = timeline.concat(probe_phase_2);
 timeline = timeline.concat(complete);
 
 jsPsych.run(timeline);

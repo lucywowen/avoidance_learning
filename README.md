@@ -1,1 +1,2 @@
 # avoidance_learning
+This is an avoidance learning paradigm adapted from the relative value task from Palminteri et al. (2015) and the task code from [the demo tasks from Yael Niv's lab] (https://github.com/nivlab/jspsych-demos/tree/main/tasks/rvl).  This task has also been converted from jsPsych6 to jsPsych7.
